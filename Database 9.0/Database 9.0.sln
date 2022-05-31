@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Database 9.0", "Database 9.0\Database 9.0.pyproj", "{2C224407-59E5-45CC-89E6-D34163F4A12A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C224407-59E5-45CC-89E6-D34163F4A12A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C224407-59E5-45CC-89E6-D34163F4A12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3752A38F-A77D-40B4-AB96-3965CE0FE5DD}
+	EndGlobalSection
+EndGlobal
