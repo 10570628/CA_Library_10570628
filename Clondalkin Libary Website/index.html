@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://liamgreer.australiasoutheast.cloudapp.azure.com/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <title>Clondalkin Library</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <meta name="description" content="Clondalkin Library, open since 1911, is a two-storey Carnegie building in Clondalkin Village.">
+    <meta name="keywords" content="Dublin,Book,Clondalkin,Village,Luas,Educational">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/9e35783bcb.js" crossorigin="anonymous"></script>
+    <meta name="Clondalkin Library" property="Clondalkin Library" content="Clondalkin Library">
+  </head>
+
+  <body>
+
+     <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>|
+        <li><a href="search/index.html">Search</a></li>|
+        <li><a href="contact/index.html">Contact</a></li>|
+        <li><a href="sign in/index.html">Sign In</a></li>|
+    </ul>
+
+<main>
+  <div id="Clondalkin-home">
+    <h1>
+    <p>Clondalkin Library</p>
+      
+  </h1>
+
+
+<div class="home-paragraph-1">
+
+<p><p>Clondalkin Library, open since 1911, is a two-storey Carnegie building in Clondalkin Village. Designed by T. J. Byrne, it is the oldest library in South Dublin County Council’s library network. The building, although refurbished, retains many of its original architectural features.<br>
+<br>The adult library is downstairs with the children’s and young adult libraries upstairs.</br><br>
+ <br></br>
+
+<div class="home-paragraph-2">
+Downstairs is fully wheelchair accessible with a ramp to the front door. The toilet is also wheelchair accessible. There are two disabled parking spaces opposite the library. There is no lift. Upstairs is accessed by stairs.
+
+<br>Downstairs there is a cosy reading area with armchairs and a power supply. Upstairs there are study tables with a power supply.<br></br>
+
+The Red Line LUAS Red Cow stop is approximately a ten minute walk from Clondalkin library. From the LUAS stop walk over the blue bridge and towards the village.<br></br>
+
+
+
+<div class="home-pic">
+
+
+
+
+</p>
+
+
+<div class="home-pic">
+<img src="assets/images/Clondalkin_Library.png" alt="Room Photo" height="500px" width="500px"/>
+</div>
+
+<div class="index-open-time">
+<div class="open-times-inner"> 
+  <table>
+      <tr>
+        <th colspan="2">Opening Hours</th>
+      </tr>
+      <tr>
+        <td>MON</td>
+        <td>09:00 - 17:00</td>
+      </tr>
+      <tr>
+        <td>TUE</td>
+        <td>09:00 - 17:00</td>
+      </tr>
+      <tr>
+        <td>WED</td>
+        <td>09:00 - 17:00</td>
+      </tr>
+      <tr>
+        <td>THU</td>
+        <td>09:00 - 17:00</td>
+      </tr>
+      <tr>
+        <td>FRI</td>
+        <td>09:00 - 17:00</td>
+      </tr>
+      <tr>
+        <td>SAT</td>
+        <td>10:00 - 16:00</td>
+      </tr>
+      <tr>
+        <td>SUN</td>
+        <td>10:00 - 16:00</td>
+      </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+  </main>
+</body>
+
+
+<meta name="viewport" content="width=device-width">
+<title>Test API Client</title>
+<script>
+let doIt=()=>{
+  let tab=document.getElementById("tab1");
+  let rows=tab1.getElementsByTagName('tr');
+  fetch('https://liamgreer.australiasoutheast.cloudapp.azure.com:8080/greetme?name=Liam')
+    .then(response => response.json())
+    .then(data=>data.Results.forEach(  //.slice(0,3)
+      x=>{
+        let newRow=rows[0].cloneNode(true);
+        let divs=newRow.getElementsByTagName('td');
+        divs[0].innerHTML=x['ID'];
+        divs[1].innerHTML=x['Book Name'];
+        divs[2].innerHTML=x['Author'];
+        tab1.appendChild(newRow);
+      }
+    )
+  );
+}
+</script>
+</head>
+<body>
+<button onclick="doIt()">Press me</button>
+This is where the results turn up: <br>
+<table id="tab1" bgcolor="cyan">
+<tbody><tr><td>ID</td><td> Book Name</td><td>Author</td></tr>
+</tbody></table>
+
+  
+</body></html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Clondalkin Library - Search</title>
+		<link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+			
+	<nav>
+		<ul class="nav-list">
+			<li><a href="../index.html">Home</a></li>|
+			<li><a href="../search/index.html">Search</a></li>|
+			<li><a href="../contact/index.html">Contact</a></li>|
+			<li><a href="../sign in/index.html">Sign In</a></li>|
+			
+		</ul>
+	</nav>
+
+<main>	
+
+<h1>Search</h1>
+
+</main>
+  			
+<div class="about-paragraph-1">
+	<p> Search for the book you're looking for! <br>
+
+
+
+####DATABASE###
+import sqlite3
+from Library import Library
+
+conn = sqlite3.connect(':memory:')    ###Refresh database on every test, do not need to delete database to add/remove info - does not retain info if books are removed###
+
+c = conn.cursor()
+###CREATE TABLE####
+c.execute("""CREATE TABLE library (
+            first text,
+            middle text,
+            last text
+            )""")
+
+                             ###INSERT BOOK###
+def insert_bok(bok):
+    with conn:
+        c.execute("INSERT INTO library VALUES (:first, :middle, :last)", {'first': bok.first, 'middle': bok.middle, 'last': bok.last})
+
+                             ###FIND BOOK### #(first name = title, Middle name = author, last = date book was published)#
+def get_bok_by_name(middlename):
+    c.execute("SELECT * FROM library WHERE middle=:middle", {'middle': middlename})
+
+    return c.fetchall()
+
+def update_last(bok, last):  ###Update book info###
+    with conn:
+        c.execute("""UPDATE library SET last = :last
+                    WHERE first = :first AND middle = :middle""",
+                  {'first': bok.first, 'middle': bok.middle, 'last': last})
+
+
+def remove_emp(bok):        ###remove book###
+    with conn:
+        c.execute("DELETE from library WHERE first = :first AND middle = :middle",
+                  {'first': bok.first, 'middle': bok.middle})
+
+                           ###Books to add to database - 8 in total###
+
+bok_1 = Library('Dracula','Bram Stoker', '26/05/1897')
+bok_2 = Library('Dune', 'Frank Herbert', '01/08/1865')
+bok_3 = Library('The Hobbit', 'J. R. R. Tolkien', '21/09/1937')
+bok_4 = Library('The Lord of the Rings, the Fellowship of the Ring', 'J. R. R. Tolkien', '29/07/1954')
+bok_5 = Library('The Lord of the Rings, the Two Towers', 'J. R. R. Tolkien', '11/11/1954')
+bok_6 = Library('The Lord of the Rings, the Return of the King', 'J. R. R. Tolkien', '20/10/1955')
+bok_7 = Library('Storm Front', 'Jim Butcher', '01/04/2000')
+bok_8 = Library('Fool Moon', 'Jim Butcher', '09/01/2001')
+
+insert_bok(bok_1)
+insert_bok(bok_2)
+insert_bok(bok_3)
+insert_bok(bok_4)
+insert_bok(bok_5)
+insert_bok(bok_6)
+insert_bok(bok_7)
+insert_bok(bok_8)
+
+
+#to remove book - coded out to not remove something by default#
+#remove_emp(bok_1)
+
+                    ###to find a book - it's set to by author (Middle) 
+
+boks = get_bok_by_name('Jim Butcher')
+print(boks)
+conn.commit()
+conn.close()
+
+
+
+
+<div class="about-picture-outer">
+	<h5><a href="https://www.google.ie/maps/place/Clondalkin+Library/@53.3207205,-6.3907254,17z/data=!3m1!4b1!4m5!3m4!1s0x4867734f65d6d055:0x3345888ca3e384a!8m2!3d53.3206922!4d-6.3885511" target="_blank" rel="nofollow">You can find us on Google Maps by clicking here.</a><h5>
+		
+		<div class="about-picture-inner">
+			<img src="../assets/images/Clondalkin_Library.png" alt="Beach" height="500px" width="500px"/>
+		</div>
+	</div>
+	
+
+
+</body>
+	
+<footer>
+	© 2022
+</footer>
