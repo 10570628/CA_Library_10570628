@@ -11,7 +11,7 @@ c.execute("""CREATE TABLE library (
             )""")
 
 
-def insert_emp(emp):
+def insert_bok(bok):
     with conn:
         c.execute("INSERT INTO library VALUES (:first, :middle, :last)", {'first': bok.first, 'middle': bok.middle, 'last': bok.last})
 
@@ -21,14 +21,14 @@ def get_bok_by_name(lastname):
     return c.fetchall()
 
 
-def update_pay(bok, last):
+def update_last(bok, last):
     with conn:
         c.execute("""UPDATE library SET last = :last
                     WHERE first = :first AND middle = :middle""",
                   {'first': bok.first, 'middle': bok.middle, 'last': last})
 
 
-def remove_emp(bok):
+def remove_bok(bok):
     with conn:
         c.execute("DELETE from library WHERE first = :first AND middle = :middle",
                   {'first': bok.first, 'middle': bok.middle})
@@ -43,9 +43,9 @@ boks = get_boks_by_name('Frank Herbert')
 print(emps)
 
 
-remove_emp(emp_1)
+remove_bok(bok_1)
 
-boks = get_emps_by_name('Bram Stoker')
-print(emps)
+boks = get_boks_by_name('Bram Stoker')
+print(boks)
 #conn.commit()
 conn.close()
