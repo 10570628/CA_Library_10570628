@@ -99,6 +99,7 @@ conn.commit()
 conn.close()
 
 
+<script>
 let map: google.maps.Map;
 
 function initMap(): void {
@@ -113,8 +114,9 @@ declare global {
     initMap: () => void;
   }
 }
-window.initMap = initMap;		
-		
+window.initMap = initMap;
+export {};
+</script>
 		
 		
 		
