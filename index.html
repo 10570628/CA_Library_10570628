@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://liamgreer.australiasoutheast.cloudapp.azure.com/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <title>Clondalkin Library</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <meta name="description" content="Clondalkin Library, open since 1911, is a two-storey Carnegie building in Clondalkin Village.">
+    <meta name="keywords" content="Dublin,Book,Clondalkin,Village,Luas,Educational">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/9e35783bcb.js" crossorigin="anonymous"></script>
+    <meta name="Clondalkin Library" property="Clondalkin Library" content="Clondalkin Library">
+  </head>
+
+  <body>
+
+     <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>|
+        <li><a href="search/index.html">Search</a></li>|
+        <li><a href="contact/index.html">Contact</a></li>|
+        <li><a href="sign in/index.html">Sign In</a></li>|
+    </ul>
+
+
+
+import sqlite3
+
+conn = sqlite3.connect('library.db')
+
+c = conn.cursor()
+
+#########CREATE DATABASE~~~~~~
+# c.execute("""CREATE TABLE library (
+#            first text,
+#           middle text,
+#            last text
+#            )""")
+
+
+
+###########INSERT###############
+#c.execute("INSERT INTO library VALUES ('Dune', 'Frank Herbert', '01/08/1865')")
+
+
+###########SEARCH############
+c.execute("SELECT * FROM library WHERE middle = 'Jim Butcher'")
+
+
+#########SHOW DATABASE########
+#print(c.fetchone())
+print(c.fetchall())
+
+
+conn.commit()
+
+conn.close()
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width">
+<title>Test API Client</title>
+<script>
+let doIt=()=>{
+  let tab=document.getElementById("tab1");
+  let rows=tab1.getElementsByTagName('tr');
+  fetch('https://liamgreer.australiasoutheast.cloudapp.azure.com:8080/greetme?name=Liam')
+    .then(response => response.json())
+    .then(data=>data.Results.forEach(  //.slice(0,3)
+      x=>{
+        let newRow=rows[0].cloneNode(true);
+        let divs=newRow.getElementsByTagName('td');
+        divs[0].innerHTML=x['ID'];
+        divs[1].innerHTML=x['Book Name'];
+        divs[2].innerHTML=x['Author'];
+        tab1.appendChild(newRow);
+      }
+    )
+  );
+}
+</script>
+</head>
+<body>
+<button onclick="doIt()">Press me</button>
+This is where the results turn up: <br>
+<table id="tab1" bgcolor="cyan">
+<tbody><tr><td>ID</td><td> Book Name</td><td>Author</td></tr>
+</tbody></table>
+
+  
+</body></html>
